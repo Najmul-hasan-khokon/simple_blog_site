@@ -1,38 +1,44 @@
-import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import './App.css';
-import BlogDetails from './BlogDetails';
-import Create from './Create';
-import Home from './Home';
-import Navbar from './Navbar';
-import NotFound from './NotFound';
-import Test from './Test';
+import '../styles/App.css';
+import Layout from './Layout';
+import AboutUs from './pages/AboutUs';
+import BlogPage from './pages/BlogPage';
+import ContactPage from './pages/ContactPage';
+import ErrorPage from './pages/ErrorPage';
+import Home from './pages/Home';
+import PagePage from './pages/PagePage';
+import ProjectPage from './pages/ProjectPage';
+import Services from './pages/Services';
 
-export default function App() {
-    return (
-        <>
-            <Router>
-                <div className="App">
-                    <Navbar />
-                    <div className="content">
-                        <Switch>
-                            <Route exact path="/">
-                                <Home />
-                            </Route>
-                            <Route path="/create">
-                                <Create />
-                            </Route>
-                            <Route path="/blogs/:id">
-                                <BlogDetails />
-                            </Route>
-                            <Route path="/test">
-                                <Test />
-                            </Route>
-                            <Route component={NotFound} />
-                        </Switch>
-                    </div>
-                </div>
-            </Router>
-        </>
-    );
-}
+const App = () => (
+    <Router>
+        <Layout>
+            <Switch>
+                <Route exact path="/">
+                    <Home />
+                </Route>
+                <Route exact path="/about">
+                    <AboutUs />
+                </Route>
+                <Route path="/services">
+                    <Services />
+                </Route>
+                <Route path="/blog">
+                    <BlogPage />
+                </Route>
+                <Route path="/contact">
+                    <ContactPage />
+                </Route>
+                <Route path="/project">
+                    <ProjectPage />
+                </Route>
+                <Route path="/page">
+                    <PagePage />
+                </Route>
+                <ErrorPage />
+            </Switch>
+        </Layout>
+    </Router>
+);
+
+export default App;
